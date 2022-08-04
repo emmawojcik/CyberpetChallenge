@@ -1,8 +1,11 @@
 import { create } from 'domain';
 import inquirer from 'inquirer';
+import figlet from 'figlet';
+import chalk from 'chalk';
 
 console.log("Welcome to the Cyberpet game!");
 
+//parent class
 class Animal {
     constructor(name) {
       this.name = name;
@@ -10,7 +13,8 @@ class Animal {
       this.happiness = 50;
       this.hunger = 50;
       this.thirst = 50;
-      this.hygeine = 50;
+      this.hygiene = 50;
+      this.statsNames = ['health', 'happiness', 'hunger', 'thirst', 'hygiene'];
     }
     feed(){
         this.hunger += 15;
@@ -62,7 +66,7 @@ class Animal {
   class Cat extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['Walk', 'Stroke', 'Feed', 'Rest', 'Play']
+        this.interactionOptions = ['Walk', 'Stroke', 'feed', 'Rest', 'Play']
     }
     walk(){
       this.happiness -= 10;
@@ -70,7 +74,6 @@ class Animal {
       this.thirst -= 10;
       console.log(`${this.name} hates going on walks with you.`);
     }
-    
     stroke(){
       this.happiness -= 5;
       console.log(`${this.name} didn't really enjoy that, but somehow you escape unscathed.`);
@@ -85,12 +88,19 @@ class Animal {
   class Rabbit extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['Dig']
+        this.interactionOptions = ['Dig', 'run', 'Feed', 'Rest', 'Play']
     }
     Dig(){
       this.happiness += 10;
       this.hygeine -= 10;
       console.log(`${this.name} enjoys digging and making a huge mess`);
+    }
+    run(){
+      this.health -= 10;
+      this.hunger -= 10;
+      this.thirst -= 10;
+      this.happiness += 10;
+      console.log(`${this.name} is extremley tired from running so much`);
     }
 
     getInteractionOptions() {
@@ -101,7 +111,7 @@ class Animal {
   class Parrot extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['swing', 'exercise', 'walk', 'feed', 'rest', 'play']
+        this.interactionOptions = ['swing', 'exercise', 'interaction', 'walk', 'feed', 'rest', 'play']
     }
     swing(){
       this.happiness += 10;
@@ -113,8 +123,12 @@ class Animal {
       this.health += 5;
       this.hunger -= 10;
       this.health -= 10;
-      console.log(`${this.name} enjoys to move fly in a large space`)
-
+      console.log(`${this.name} enjoys to fly around in a large space`)
+    }
+    interaction(){
+      this.happiness += 10;
+      this.health += 5;
+      console.log(`${this.name} really loves interacting with others and it is good for ${this.name}'s mental health`);
     }
 
     getInteractionOptions() {
