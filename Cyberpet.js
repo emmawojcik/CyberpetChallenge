@@ -66,7 +66,7 @@ class Animal {
   class Cat extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['Walk', 'Stroke', 'feed', 'Rest', 'Play']
+        this.interactionOptions = ['Walk', 'Stroke','Interaction', 'Feed', 'Rest', 'Play']
     }
     walk(){
       this.happiness -= 10;
@@ -78,6 +78,11 @@ class Animal {
       this.happiness -= 5;
       console.log(`${this.name} didn't really enjoy that, but somehow you escape unscathed.`);
     }
+    interaction(){
+      this.happiness += 10;
+      this.health += 5;
+      console.log(`${this.name} loves human interaction`);
+    }
 
     getInteractionOptions() {
       return this.interactionOptions;
@@ -88,7 +93,7 @@ class Animal {
   class Rabbit extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['Dig', 'run', 'Feed', 'Rest', 'Play']
+        this.interactionOptions = ['Dig', 'Run', 'Hide', 'Feed', 'Rest', 'Play']
     }
     Dig(){
       this.happiness += 10;
@@ -102,6 +107,10 @@ class Animal {
       this.happiness += 10;
       console.log(`${this.name} is extremley tired from running so much`);
     }
+    hide(){
+      this.happiness += 10;
+      console.log(`${this.name} always hides in unusual spots!`);
+    }
 
     getInteractionOptions() {
       return this.interactionOptions;
@@ -111,7 +120,7 @@ class Animal {
   class Parrot extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['swing', 'exercise', 'interaction', 'walk', 'feed', 'rest', 'play']
+        this.interactionOptions = ['Swing', 'Exercise', 'Interaction', 'Feed', 'Rest', 'Play']
     }
     swing(){
       this.happiness += 10;

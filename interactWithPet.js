@@ -4,22 +4,7 @@ import pet from './Cyberpet.js';
 import figlet from 'figlet';
 import { Console } from 'console';
 
-console.log(pet.getInteractionOptions());
-
-const petInteract = async () => {
-  const interaction = await inquirer.prompt ([
-    {
-      type: 'list',
-      name: 'petInteraction',
-      message: `What do you and ${pet.name} want to do together?`,
-      choices: pet.getInteractionOptions()
-    }
-  ])
-  // Call the chosen interaction on the pet object
-  let chosenInteraction = String(interaction.petInteraction).toLowerCase();
-  pet[chosenInteraction]()
-
-  
+const checkPetStats = () => {
   for(let stat in pet.statsNames){
     let statName = pet.statsNames[stat];
 
@@ -43,17 +28,39 @@ const petInteract = async () => {
     console.log(chalk.red('THIRST LEVEL REACHED ZERO'));
     pet.health = 0;
   }
+}
 
-  // Log the updated stats
-  console.log('------------------');
-  console.log(`YOUR PET'S STATS: `);
-  console.log('------------------');
-  console.log(`Health: ${pet.health}`);
-  console.log(`Happiness: ${pet.happiness}`);
-  console.log(`Hunger: ${pet.hunger}`);
-  console.log(`Thirst: ${pet.thirst}`);
-  console.log(`Hygiene: ${pet.hygiene}`);
-  console.log('------------------');
+const logStats = () => {
+    // Log the updated stats
+    console.log('------------------');
+    console.log(`YOUR PET'S STATS: `);
+    console.log('------------------');
+    console.log(`Health: ${pet.health}`);
+    console.log(`Happiness: ${pet.happiness}`);
+    console.log(`Hunger: ${pet.hunger}`);
+    console.log(`Thirst: ${pet.thirst}`);
+    console.log(`Hygiene: ${pet.hygiene}`);
+    console.log('------------------');
+}
+
+
+const petInteract = async () => {
+  const interaction = await inquirer.prompt ([
+    {
+      type: 'list',
+      name: 'petInteraction',
+      message: `What do you and ${pet.name} want to do together?`,
+      choices: pet.getInteractionOptions()
+    }
+  ])
+  // Call the chosen interaction on the pet object
+  let chosenInteraction = String(interaction.petInteraction).toLowerCase();
+  pet[chosenInteraction]()
+
+  checkPetStats();
+
+  logStats();
+
 }
 
 // While pet is alive, interact with pet
