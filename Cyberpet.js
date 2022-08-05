@@ -22,13 +22,20 @@ class Animal {
         this.health += 10;
         console.log(`${this.name} loves food`);
     }
+
+    drink(){
+      this.thirst += 15;
+      this.happiness += 10;
+      this.health += 10;
+      console.log(`${this.name} feels more hydrated now.`);
+    }
     rest(){
         this.health += 5;
         this.happiness +=5;
         console.log(`${this.name} is full of energy!`);
     }
     play(){
-        this.happiness += 10;
+        this.happiness += 15;
         this.hunger -= 5;
         this.health -= 10;
         this.thirst -= 10;
@@ -38,7 +45,7 @@ class Animal {
   class Dog extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['Walk', 'Stroke', 'Wash', 'Feed', 'Rest', 'Play']
+        this.interactionOptions = ['Walk', 'Stroke', 'Wash', 'Feed', 'Drink', 'Rest', 'Play']
     }
     walk(){
         this.hunger -= 5;
@@ -66,7 +73,7 @@ class Animal {
   class Cat extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['Walk', 'Stroke','Interaction', 'Feed', 'Rest', 'Play']
+        this.interactionOptions = ['Walk', 'Stroke','Interaction', 'Feed', 'Drink', 'Rest', 'Play']
     }
     walk(){
       this.happiness -= 10;
@@ -93,9 +100,9 @@ class Animal {
   class Rabbit extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['Dig', 'Run', 'Hide', 'Feed', 'Rest', 'Play']
+        this.interactionOptions = ['Dig', 'Run', 'Hide', 'Feed', 'Drink', 'Rest', 'Play']
     }
-    Dig(){
+    dig(){
       this.happiness += 10;
       this.hygeine -= 10;
       console.log(`${this.name} enjoys digging and making a huge mess`);
@@ -120,7 +127,7 @@ class Animal {
   class Parrot extends Animal {
     constructor(name){
         super(name)
-        this.interactionOptions = ['Swing', 'Exercise', 'Interaction', 'Feed', 'Rest', 'Play']
+        this.interactionOptions = ['Swing', 'Exercise', 'Interaction', 'Feed', 'Drink', 'Rest', 'Play']
     }
     swing(){
       this.happiness += 10;
@@ -176,6 +183,5 @@ const createPet = async () => {
 }
 
 await createPet()
-console.log(pet)
 
 export default pet;

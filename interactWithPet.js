@@ -2,7 +2,6 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 import pet from './Cyberpet.js';
 import figlet from 'figlet';
-import { Console } from 'console';
 
 const checkPetStats = () => {
   for(let stat in pet.statsNames){
